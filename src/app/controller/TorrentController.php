@@ -5,6 +5,7 @@ namespace app\controller;
 
 use app\ApplyAppableInterface;
 use app\AppContextInterface; 
+use app\util\View;
 
 /**
  * Description of TorrentController
@@ -29,8 +30,10 @@ class TorrentController implements ApplyAppableInterface  {
      * 
      */
     public function actionIndex() { 
-        $data = $this->daoCat->query();
-        var_dump($data);
+        $categories = $this->daoCat->all();
+        View::renderPhp('torrent/index', [
+            'categories'  => $categories,
+        ]); 
     }
 
     /**

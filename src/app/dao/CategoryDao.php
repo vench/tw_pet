@@ -32,6 +32,26 @@ class CategoryDao {
         }
         return [];
     }
+    
+    
+    /**
+     *  
+     * @return app\model\Category[]
+     */
+    public function all() {
+        $conn = $this->getConnection();
+        $sql = 'SELECT * FROM tr_category ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        if (is_array($rows)) {
+            $self = $this;
+            return array_map(function($row) use(&$self) {
+                return $self->fillModel($row);
+            }, $rows);
+        }
+        return [];
+    }
 
     /**
      * 
