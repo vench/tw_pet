@@ -27,9 +27,15 @@ class App implements AppContextInterface {
      */
     private $reflections = [];
 
+    /**
+     * 
+     */
     private function __construct() { }
 
      
+    /**
+     * 
+     */
     private function run() { 
         $this->runRequest();  
     }
@@ -114,6 +120,13 @@ class App implements AppContextInterface {
         } 
     }
 
-    
+    /**
+     * 
+     * @return App
+     */
+    public static function current() {
+        self::launch();
+        return self::$inst;
+    }
 
 }

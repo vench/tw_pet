@@ -53,3 +53,34 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2016-06-21 14:41:58
+
+
+DROP TABLE IF EXISTS `tr_category`;
+
+CREATE TABLE `tr_category` (
+    `catId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+    `parentCatId` int(10) unsigned DEFAULT NULL,
+    `title` varchar(255) NOT NULL,
+    `image` varchar(255) NOT NULL,
+    `url` varchar(255) NOT NULL,
+    PRIMARY KEY (`catId`),
+    FOREIGN KEY (`parentCatId`) REFERENCES tr_category(`catId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `tr_torrent`;
+
+CREATE TABLE `tr_torrent` (
+    `torId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+    `catId` int(10) unsigned DEFAULT NULL,
+    `title` varchar(255) NOT NULL,
+    `name` varchar(255) NOT NULL,
+    `image` varchar(255) NOT NULL,
+    `url` varchar(255) NOT NULL,
+    `metadata` varchar(255) NOT NULL,
+    `metakeys` varchar(255) NOT NULL,
+    `content` text NOT NULL,
+    `contentShort` text NOT NULL,
+
+    PRIMARY KEY (`torId`),
+    FOREIGN KEY (`catId`) REFERENCES tr_category(`catId`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;

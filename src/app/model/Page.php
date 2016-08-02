@@ -40,14 +40,25 @@ class Page {
      */
     private $modified;
     
+    /**
+     * 
+     */
     public function __construct() {
         $this->modified = new \DateTime();
     }
     
+    /**
+     * 
+     * @return type
+     */
     public function getPageId() {
         return $this->pageId;
     }
 
+    /**
+     * 
+     * @return type
+     */
     public function getTitle() {
         return $this->title;
     }

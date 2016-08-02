@@ -29,7 +29,7 @@ class View {
      * @throws \Exception
      */
     public static function renderPhp($file, $params = array(), $output = true) {
-        $s = '';
+       
         $path = self::getPathView() .  DIRECTORY_SEPARATOR . $file;
         if(strpos($path, '.php') === FALSE) {
             $path .= '.php';
